@@ -1,5 +1,5 @@
 /** @format */
 
-export function one(a: number, b: number) {
+export async function one(a: number, b: number) {
   return a + b
 }
