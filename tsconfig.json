@@ -5,7 +5,7 @@
     "rootDir": "./src",
     "lib": ["ES6"],
     "typeRoots": ["./dist"],
-    "types": ["node"],
+    "types": ["node", "typescript/lib/lib"],
     "outDir": "./dist",
     "declaration": true,
     "esModuleInterop": true,
