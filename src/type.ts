@@ -1,8 +1,8 @@
 /** @format */
 
 export interface ITranslateOptions {
-  to: string
-  from: string
+  to?: string
+  from?: string
 }
 
 export interface ITranslateLocation {
