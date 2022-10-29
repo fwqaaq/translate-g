@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2017",
     "module": "ESNext",
     "rootDir": "./src",
-    "lib": ["ES6"],
+    "lib": ["ESNext"],
     "typeRoots": ["./dist"],
-    "types": ["node", "typescript/lib/lib"],
+    "types": ["node", "typescript/lib/lib", "typescript/lib/lib.es2022"],
     "outDir": "./dist",
     "declaration": true,
     "esModuleInterop": true,
