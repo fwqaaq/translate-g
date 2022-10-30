@@ -1,6 +1,6 @@
 {
   "name": "translate-g",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A node lib about google translate",
   "main": "index.mjs",
   "type": "module",

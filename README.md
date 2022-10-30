@@ -318,4 +318,23 @@ interface IRes {
 * from: Guess the language you translate
 * JsonRes: Origin response text
 
+## examples
+
+> you can't use `raw` params
+
+```js
+gTranslate('hello', { to: 'zh-CN' }).then((res) => {
+  console.log(res)
+})
+// { textTranslate: '你好', textRaw: 'hello', from: 'English' }
+```
+
+> Or you can use `raw` params
+
+```js
+gTranslate('hello', { to: 'zh-CN', raw: true }).then((res) => {
+  console.log(res)
+})
+```
+
 ## [MIT](./LICENSE)
