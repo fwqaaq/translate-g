@@ -2,6 +2,7 @@
 
 import type { ITranslateOptions, IQuery, IRes } from './type'
 import toAndFrom from './language.json' assert { type: 'json' }
+import { isSupported, dealQuery } from './utils'
 const { to, from } = toAndFrom
 
 // console.log(to, from)
@@ -44,29 +45,11 @@ async function gTranslate(text: string, options: ITranslateOptions) {
     textTranslate: json[0][0][0],
     textRaw: json[0][0][1],
     from: json[2] && json[8][0][0] ? json[2] : json[8][0][0],
-    JsonRes: options.raw ? json : undefined,
   }
 
+  // provide the json response for the user
+  if (options.raw) res.JsonRes = json
   return res
-}
-
-function isSupported(language: string, checked: { [index: string]: string }) {
-  return Object.keys(checked).find(
-    (key) =>
-      key === language.toLowerCase() || checked[key] === language.toLowerCase()
-  )
-}
-
-function dealQuery(query: IQuery) {
-  const queryStr = Object.entries(query)
-    .map(([key, value]) => {
-      if (Array.isArray(value)) {
-        return value.map((item) => `${key}=${item}`).join('&')
-      }
-      return `${key}=${value}`
-    })
-    .join('&')
-  return encodeURI(queryStr)
 }
 
 export { gTranslate }

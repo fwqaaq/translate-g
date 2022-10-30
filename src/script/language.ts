@@ -4,14 +4,13 @@ import { type ITranslateLocation } from '../type'
 
 const regex = /data:(\[\[\[".*?\]\]\])/g
 
-const body = await getBody()
-
-// console.log(body)
-
-fs.writeFileSync(
-  './src/language.json',
-  JSON.stringify(dealMatch(body.matchAll(regex)), null, 2)
-)
+async function getTranslateJson() {
+  const body = await getBody()
+  fs.writeFileSync(
+    './src/language.json',
+    JSON.stringify(dealMatch(body.matchAll(regex)), null, 2)
+  )
+}
 
 async function getBody() {
   let body = ''
@@ -46,3 +45,5 @@ function twoDimensionalArray(arr: string[][]) {
   })
   return obj
 }
+
+getTranslateJson()

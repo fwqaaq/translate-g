@@ -28,6 +28,7 @@
   "license": "MIT",
   "homepage": "https://github.com/Jack-Zhang-1314/G-translate#readme",
   "devDependencies": {
+    "@rollup/plugin-json": "^5.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
     "@types/node": "^18.11.7",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
