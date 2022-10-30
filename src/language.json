@@ -1,5 +1,5 @@
 {
-  "to": {
+  "from": {
     "auto": "Detect language",
     "af": "Afrikaans",
     "sq": "Albanian",
@@ -135,7 +135,7 @@
     "yo": "Yoruba",
     "zu": "Zulu"
   },
-  "from": {
+  "to": {
     "af": "Afrikaans",
     "sq": "Albanian",
     "am": "Amharic",

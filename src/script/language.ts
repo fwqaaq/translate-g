@@ -1,12 +1,15 @@
 /** @format */
 import * as fs from 'fs'
-import { type ITranslateLocation } from './type'
+import { type ITranslateLocation } from '../type'
 
 const regex = /data:(\[\[\[".*?\]\]\])/g
+
 const body = await getBody()
 
+// console.log(body)
+
 fs.writeFileSync(
-  'index.json',
+  './src/language.json',
   JSON.stringify(dealMatch(body.matchAll(regex)), null, 2)
 )
 
@@ -31,8 +34,8 @@ function dealMatch(
   const match: string = text.next().value[1]
   const toAndFrom = JSON.parse(match)
   return {
-    to: twoDimensionalArray(toAndFrom[0]),
-    from: twoDimensionalArray(toAndFrom[1]),
+    from: twoDimensionalArray(toAndFrom[0]),
+    to: twoDimensionalArray(toAndFrom[1]),
   }
 }
 

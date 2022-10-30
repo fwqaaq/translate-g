@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx ts-node --esm ./src/index.ts",
-    "genjson": "npx ts-node --esm ./src/language.ts",
+    "genjson": "npx ts-node --esm ./src/script/language.ts",
     "build": "npx rollup -c rollup.config.js",
     "test": "npx ts-node --esm ./test/index.ts",
     "lint": "eslint --fix --ext .ts,.cjs,mjs,js ."
