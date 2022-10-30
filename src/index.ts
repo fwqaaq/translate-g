@@ -30,8 +30,7 @@ async function gTranslate(text: string, options: ITranslateOptions) {
        'ex': examples
        'ss': if the source text is a word, return related words
        'md': if the source text is a word, return the definition of the word
-
-      'bd': translation of the text with the original text
+       'bd': translation of the text with the original text
     
     */
     dt: ['t', 'at', 'bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss'],

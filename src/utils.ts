@@ -9,7 +9,7 @@ export function isSupported(
   return Object.keys(checked).find(
     (key) =>
       key.toLowerCase() === language.toLowerCase() ||
-      checked[key] === language.toLowerCase()
+      checked[key].toLowerCase() === language.toLowerCase()
   )
 }
 
