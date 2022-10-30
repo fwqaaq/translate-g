@@ -1,5 +1,5 @@
 /** @format */
-import type { IQuery } from './type'
+import type { IQuery } from './type.js'
 
 // check if the language is supported
 export function isSupported(
@@ -8,7 +8,8 @@ export function isSupported(
 ) {
   return Object.keys(checked).find(
     (key) =>
-      key === language.toLowerCase() || checked[key] === language.toLowerCase()
+      key.toLowerCase() === language.toLowerCase() ||
+      checked[key] === language.toLowerCase()
   )
 }
 

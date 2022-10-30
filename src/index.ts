@@ -1,8 +1,8 @@
 /** @format */
 
-import type { ITranslateOptions, IQuery, IRes } from './type'
+import type { ITranslateOptions, IQuery, IRes } from './type.js'
 import toAndFrom from './language.json' assert { type: 'json' }
-import { isSupported, dealQuery } from './utils'
+import { isSupported, dealQuery } from './utils.js'
 const { to, from } = toAndFrom
 
 // console.log(to, from)
@@ -25,7 +25,16 @@ async function gTranslate(text: string, options: ITranslateOptions) {
     sl: options.from!,
     tl: options.to!,
     hl: options.to!,
-    dt: ['at', 'bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss', 't'],
+    /* 't': translation of the text with the original text
+       'at': Synonyms related to the source text
+       'ex': examples
+       'ss': if the source text is a word, return related words
+       'md': if the source text is a word, return the definition of the word
+
+      'bd': translation of the text with the original text
+    
+    */
+    dt: ['t', 'at', 'bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss'],
     ie: 'UTF-8',
     oe: 'UTF-8',
     q: text,
@@ -40,11 +49,14 @@ async function gTranslate(text: string, options: ITranslateOptions) {
   }
   const json = await response?.json()
 
+  const fromSimple: keyof typeof from =
+    json[2] && json[8][0][0] ? json[2] : json[8][0][0]
+
   // RETURN response's result
   const res: IRes = {
     textTranslate: json[0][0][0],
     textRaw: json[0][0][1],
-    from: json[2] && json[8][0][0] ? json[2] : json[8][0][0],
+    from: from[fromSimple],
   }
 
   // provide the json response for the user
