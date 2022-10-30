@@ -10,7 +10,58 @@ A node lib about google translate api. <span style="color:red">It's done entirel
 npm i translate-g
 ```
 
-> Second, You can take a look at the relevant supported languages.
+> Second, you can check its type. It's done entirely using ts.
+
+```ts
+interface ITranslateOptions {
+  to?: string;
+  from?: string;
+  raw?: boolean;
+}
+```
+
+* `to`: what language do you want to translate into? if not, it is `auto`.
+* `from`: language before translation. if not, it is `en`
+* `raw`: Origin response text from google translate. if not, it is `false`.
+
+[You can find supported languages in here](#Relevant supported languages)
+
+> Thirty, return result type
+
+```ts
+interface IRes {
+  textRaw: string
+  textTranslate: string
+  from: string
+  JsonRes?: []
+}
+```
+
+* textRaw: Origin text
+* textTranslate: translated text
+* from: Guess the language you translate
+* JsonRes: Origin response text
+
+## examples
+
+> you can't use `raw` params
+
+```js
+gTranslate('hello', { to: 'zh-CN' }).then((res) => {
+  console.log(res)
+})
+// { textTranslate: '你好', textRaw: 'hello', from: 'English' }
+```
+
+> Or you can use `raw` params
+
+```js
+gTranslate('hello', { to: 'zh-CN', raw: true }).then((res) => {
+  console.log(res)
+})
+```
+
+## Relevant supported languages
 
 ```json
 {
@@ -286,55 +337,6 @@ npm i translate-g
     "zu": "Zulu"
   }
 }
-```
-
-> Thirty, you can check its type. It's done entirely using ts.
-
-```ts
-interface ITranslateOptions {
-  to?: string;
-  from?: string;
-  raw?: boolean;
-}
-```
-
-* `to`: what language do you want to translate into? if not, it is `auto`.
-* `from`: language before translation. if not, it is `en`
-* `raw`: Origin response text from google translate. if not, it is `false`
-
-> Fourty, return result type
-
-```ts
-interface IRes {
-  textRaw: string
-  textTranslate: string
-  from: string
-  JsonRes?: []
-}
-```
-
-* textRaw: Origin text
-* textTranslate: translated text
-* from: Guess the language you translate
-* JsonRes: Origin response text
-
-## examples
-
-> you can't use `raw` params
-
-```js
-gTranslate('hello', { to: 'zh-CN' }).then((res) => {
-  console.log(res)
-})
-// { textTranslate: '你好', textRaw: 'hello', from: 'English' }
-```
-
-> Or you can use `raw` params
-
-```js
-gTranslate('hello', { to: 'zh-CN', raw: true }).then((res) => {
-  console.log(res)
-})
 ```
 
 ## [MIT](./LICENSE)
